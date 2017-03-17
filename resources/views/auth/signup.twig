@@ -1,0 +1,64 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+	<div class="row">
+		
+		<div class="col-md-6 col-md-offset-3">
+			
+		<div class="panel panel-success ">
+			<div class="panel-heading"><center> <h4><span class="glyphicon glyphicon-lock"></span><strong> Sign Up </strong></h4></center> </div>
+
+			<div class="panel-body">
+				<!-- {% if errors%}
+				{{ errors | json_encode }}
+				{% endif %} -->
+				<form action="{{ path_for('auth.signup')}} " method="POST" autocomplete="off">
+
+				<div class="form-group{{ errors.email ? ' has-error' : ''}}">
+					<label class="control-label" for="email" ><span class="glyphicon glyphicon-info-sign"></span> Email</label>
+					<input type="text" name="email" id="email" placeholder="example : you@domain.com" class="form-control" value="{{ old.email }}" >
+					{% if errors.email%}
+
+					<span class="help-block "><i class="material-icons">error</i>{{ errors.email | first }}</span>
+
+					{% endif %}
+				</div>
+
+
+				<div class="form-group{{ errors.name ? ' has-error' : ''}}">
+					<label class="control-label" for="name" ><span class="glyphicon glyphicon-user"></span> Name</label>
+					<input type="text" name="name" id="name" placeholder="Your Name" class="form-control" value="{{ old.name }}">
+				{% if errors.name %}
+
+					<span class="help-block"><i class="material-icons">error</i>{{ errors.name | first }}</span>
+
+
+				{% endif %}
+				</div>	
+
+
+				<div class="form-group{{ errors.password ? ' has-error' : ''}}">
+					<label class="control-label" for="password" ><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+					<input type="password" name="password" id="password" placeholder="Your Password" class="form-control">
+				{% if errors.password %}
+
+					<span class="help-block">{{ errors.password | first }}</span>
+
+				{% endif %}					
+				</div>	
+				
+				<button type="submit" class="btn btn-group-justified btn-success"><span class="glyphicon glyphicon-screenshot"></span>  Sign Up</button>
+
+				{{ csrf.field | raw }}
+
+				</form>
+			</div>
+
+		</div>
+
+		</div>
+
+	</div>	 
+
+{% endblock %}

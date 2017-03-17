@@ -1,0 +1,40 @@
+
+ 
+<nav class="navbar navbar-inverse bg-info">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"  href="{{ path_for('home')}}">SMPIT ULUL ALBAB</a>
+    </div>
+    <ul class="nav navbar-nav navbar-left">
+      <li class="active"><a href="{{ path_for('home')}}">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    
+
+    <ul class="nav navbar-nav navbar-right">
+
+        {% if auth.check %}
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ auth.user.name }} <img src="http://www.entando.com/portal/resources/cms/images/feature-user-management_d8.png" alt="" style="width: 25px"></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ path_for('auth.password.change')}}"><span class="glyphicon glyphicon-certificate"></span>  Change Password</a></li>
+          <li><a href="{{ path_for('auth.signout')}}"><span class="glyphicon glyphicon-transfer"></span> Log Out</a></li> </ul>  
+
+        {% else %}
+          <li><a href="{{ path_for('auth.signup')}}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+          <li><a href="{{ path_for('auth.signin')}}"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+
+    </ul>
+         {% endif %}
+    
+  </div>
+</nav>
+
+ 
